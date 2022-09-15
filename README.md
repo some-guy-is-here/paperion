@@ -15,12 +15,18 @@ If you would lke to see how this userscript works, you can just paste in the cod
 
 ## Is this a scam?!?!
 
-No. You can check the code for yourself, or get someone to do it for you. We do not steal your information, IP, or 'token' and send it to third parties. Again, I don't even charge money for this, and it's literally open source. If you still don't trust me, I don't care lol.
+No. You can check the code for yourself, or get someone to do it for you. We do not steal your information, IP, or 'token' and send it to third parties. Again, I don't even charge money for this, and it's literally open source. If you still don't trust me i don't care lol.
 
 ## Development
 
 You do not need any additional tools to develop paper2hack (i.e. NodeJS, WebPack, etc...)  
-paper2hack uses `lil-gui` (https://lil-gui.georgealways.com/) to create the options element at the top of your screen.
+paper2hack uses `lil-gui` (https://lil-gui.georgealways.com/) to create the options element at the top of your screen. 
+
+## Adblocker 
+Because paper2hack is not a web extension, the ability to remove ads you have normally with Adblock and uBlock Origin is not available.  
+Instead of denying requests, paper2hack must manually hide elements and delete variables manipulated by the ad provider.  
+This makes it significantly more difficult to hide the ads, especially when an ad provider updates their platform.  
+Workarounds are being made to bypass this difficulty, but we still recommend using a traditional ad-blocker such as uBlock Origin.
 
 ## LICENSE
 ***PLEASE NOTE: BELOW ARE THE REQUIREMENTS FOR HOSTING ANY OF PAPER2HACK'S CONTENT ON YOUR OWN. IT IS IMPERITIVE THAT YOU FOLLOW ALL TERMS OF THIS LICENSE. OTHERWISE, DMCA TAKEDOWN NOTICES WILL BE PLACED.***   
