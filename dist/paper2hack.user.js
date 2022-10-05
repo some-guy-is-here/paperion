@@ -7,7 +7,7 @@
 // @match        https://paper-io.com/teams/
 // @match        https://paperanimals.io
 // @match        https://amogus.io
-// @require      https://cdn.jsdelivr.net/npm/lil-gui@0.17
+// @require      https://cdn.jsdelivr.net/npm/lil-gui
 // @icon         https://paper-io.com/favicon.ico
 // @grant        none
 // ==/UserScript==
