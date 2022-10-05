@@ -31,7 +31,6 @@ window.addEventListener('load', function () {
       }
   }
   let ETC = {
-      "Adblock": false,
       "Reset": function(){gui.reset()},
       "Scroll to zoom": false,
       "Debug": api.game.debug && api.game.debugGraph,
@@ -68,17 +67,6 @@ window.addEventListener('load', function () {
       })
       Cookies.set('skin', id)
       location.reload()
-  })
-  gui.add(ETC, "Adblock").onFinishChange(value => {
-      if(value === false){
-          for (const element of document.getElementsByTagName("iframe")){
-              element.style.display = "block"
-          }
-      } else {
-          for (const element of document.getElementsByTagName("iframe")){
-              element.style.display = "hidden"
-          }
-      }
   })
 
   gui.add(ETC, "Scroll to zoom").onFinishChange(value => {
