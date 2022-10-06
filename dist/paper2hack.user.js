@@ -78,8 +78,11 @@ window.addEventListener('load', function () {
   })
   gui.add(ETC, "Reset")
   /*Last things*/
-  gui.load(localStorage.getItem("paper2hack"))
+  if(!localStorage.getItem('paper2hack')){
+    this.localStorage.setItem('paper2hack', JSON.stringify({}))
+  }
+  gui.load(JSON.parse(localStorage.getItem("paper2hack")))
   gui.onFinishChange(e => {
-      localStorage.setItem("paper2hack", gui.save())
+      localStorage.setItem("paper2hack", JSON.stringify(gui.save()))
   })
 }, false);
