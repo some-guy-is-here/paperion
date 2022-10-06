@@ -14,7 +14,7 @@
 adblock = () => false //this detects if adblock is on, we make it always return false so that the impostor skin loads
 window.addEventListener('load', function () {
   "use strict";
-  let newApi = location.href === "https://paper-io.com/teams/" || location.href === "https://paperanimals.io/" || location.href === "https://amogus.io"
+  let newApi = (location.href === "https://paper-io.com/teams/" || location.href === "https://paperanimals.io/" || location.href === "https://amogus.io")
   window.api = {
       config: function(){
           if(newApi){
