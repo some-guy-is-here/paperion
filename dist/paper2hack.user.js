@@ -14,16 +14,17 @@
 adblock = () => false //this detects if adblock is on, we make it always return false so that the impostor skin loads
 window.addEventListener('load', function () {
   "use strict";
+  let newApi = location.href === "https://paper-io.com/teams/" || location.href === "https://paperanimals.io/" || location.href === "https://amogus.io"
   window.api = {
-      get config(){
-          if(location.href === "https://paper-io.com/teams/" || location.href === "https://paperanimals.io/" || location.href === "https://amogus.io"){
+      config: function(){
+          if(newApi){
               return paperio2api.config
           } else {
               return paper2.currentConfig
           }
       },
-      get game(){
-          if(location === ("https://paper-io.com/teams/" || "https://paperanimals.io" || "https://amogus.io")){
+      game: function(){
+          if(newApi){
               return paperio2api.game
           } else {
               return paper2.game
@@ -33,8 +34,8 @@ window.addEventListener('load', function () {
   let ETC = {
       "Reset": function(){gui.reset()},
       "Scroll to zoom": false,
-      "Debug": api.game.debug && api.game.debugGraph,
-      "Speed": api.config.unitSpeed,
+      "Debug": api.game().debug && api.game().debugGraph,
+      "Speed": api.config().unitSpeed,
       "Skin (requires refresh)": "",
       "_skins": [],
   }
