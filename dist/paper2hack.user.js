@@ -37,6 +37,13 @@ window.addEventListener('load', function () {
       "Debug": api.game().debug && api.game().debugGraph,
       "Speed": api.config().unitSpeed,
       "Skin (requires refresh)": "",
+      "Unlock all Skins": () => {
+        shop.btnsData.forEach(item => {
+            if (item.unlockName) {
+                unlockSkin(item.unlockName)
+            }
+        })
+      },
       "_skins": [],
   }
   shop.btnsData.forEach(i => {
@@ -69,7 +76,7 @@ window.addEventListener('load', function () {
       Cookies.set('skin', id)
       location.reload()
   })
-
+  gui.add(ETC, "Unlock all Skins")
   gui.add(ETC, "Scroll to zoom").onFinishChange(value => {
       if(value === true){
           window.addEventListener("wheel", scrollE)
