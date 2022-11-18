@@ -74,7 +74,6 @@ window.addEventListener('load', function () {
           }
       })
       Cookies.set('skin', id)
-      location.reload()
   })
   gui.add(ETC, "Unlock all Skins")
   gui.add(ETC, "Scroll to zoom").onFinishChange(value => {
