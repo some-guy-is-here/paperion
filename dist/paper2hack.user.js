@@ -14,6 +14,7 @@
 adblock = () => false //this detects if adblock is on, we make it always return false so that the impostor skin loads
 window.addEventListener('load', function () {
   "use strict";
+  const VERSION = "beta 0.1.10"
   let newApi = (location.href === "https://paper-io.com/teams/" || location.href === "https://paperanimals.io/" || location.href === "https://amogus.io")
   window.api = {
       config: function(){
@@ -34,7 +35,7 @@ window.addEventListener('load', function () {
   let ETC = {
       "Reset": function(){gui.reset()},
       "Scroll to zoom": false,
-      "Debug": api.game().debug && api.game().debugGraph,
+      "Debug": false,
       "Speed": api.config().unitSpeed,
       "Skin (requires refresh)": "",
       "Unlock all Skins": () => {
@@ -45,6 +46,23 @@ window.addEventListener('load', function () {
         })
       },
       "_skins": [],
+      "Despawn players": function(){api.game().units = [api.game().player]},
+      "About": function(){
+        alert(`
+            paper2hack ${VERSION} written by its-pablo and contributors.\n\n
+            https://github.com/its-pablo/paper2hack \n
+            Issues? https://github.com/its-pablo/paper2hack/issues
+        `)
+      },
+      "Keyboard Shortcuts": function(){
+        alert(`
+            None for the moment!\n
+            Stay tuned...
+        `)
+      },
+      "Github": function(){
+        window.open("https://github.com/its-pablo/paper2hack", '_blank').focus();
+      }
   }
   shop.btnsData.forEach(i => {
       if(i.useId === Cookies.get('skin')){
@@ -64,9 +82,11 @@ window.addEventListener('load', function () {
       }
   }
   let GUI = lil.GUI
-  let gui = new GUI({title: "paper2hack beta v0.1.9"})
-  gui.add(ETC, "Speed", 1, 500, 5)
-  gui.add(ETC, "Skin (requires refresh)", ETC._skins).onChange(v => {
+  let gui = new GUI({title: "paper2hack"})
+  let mods = gui.addFolder("Mods")
+  mods.open() //just in case it's closed
+  mods.add(ETC, "Speed", 1, 500, 5)
+  mods.add(ETC, "Skin (requires refresh)", ETC._skins).onChange(v => {
       let id;
       shop.btnsData.forEach(i => {
           if(i.name === v){
@@ -75,15 +95,25 @@ window.addEventListener('load', function () {
       })
       Cookies.set('skin', id)
   })
-  gui.add(ETC, "Unlock all Skins")
-  gui.add(ETC, "Scroll to zoom").onFinishChange(value => {
+  mods.add(ETC, "Debug").onFinishChange(value => {
+    api.game().debug = value
+    api.game().debugGraph = value
+  })
+  mods.add(ETC, "Unlock all Skins")
+  mods.add(ETC, "Despawn players")
+  mods.add(ETC, "Scroll to zoom").onFinishChange(value => {
       if(value === true){
           window.addEventListener("wheel", scrollE)
       } else {
           window.removeEventListener("wheel", scrollE)
       }
   })
-  gui.add(ETC, "Reset")
+  mods.add(ETC, "Reset")
+  let about = gui.addFolder("About")
+  about.close()
+  about.add(ETC, "About")
+  about.add(ETC, "Keyboard Shortcuts")
+  about.add(ETC, "Github")
   /*Last things*/
   if(!localStorage.getItem('paper2hack')){
     this.localStorage.setItem('paper2hack', JSON.stringify({}))
