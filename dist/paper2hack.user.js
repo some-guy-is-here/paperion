@@ -16,7 +16,7 @@ adblock = () => false //this detects if adblock is on, we make it always return 
 window.addEventListener('load', function () {
   "use strict";
   const VERSION = "beta 0.1.10"
-  let newApi = (location.href === "https://paper-io.com/battleroyale/" || location.href === "https://paper-io.com/teams/" || location.href === "https://paperanimals.io/" || location.href === "https://amogus.io")
+  let newApi = (location.href === "https://paper-io.com/battleroyale/" || location.href === "https://paper-io.com/teams/" || location.href === "https://paperanimals.io/" || location.href === "https://amogus.io/")
   window.api = {
       config: function(){
           if(newApi){
