@@ -33,7 +33,7 @@ window.addEventListener('load', function () {
       }
   }
   let ETC = {
-      "Reset": function(){gui.reset()},
+      "Reset to Default": function(){gui.reset()},
       "Scroll to zoom": false,
       "Debug": false,
       "Speed": api.config().unitSpeed,
@@ -54,11 +54,13 @@ window.addEventListener('load', function () {
         }
       },
       "Despawn players": function(){api.game().units = [api.game().player]},
-      "About": function(){
+      "Help": function(){
         alert(`
             paper2hack ${VERSION} written by its-pablo and contributors.\n\n
             https://github.com/its-pablo/paper2hack \n
             Issues? https://github.com/its-pablo/paper2hack/issues
+
+            If you encounter any issues with paper2hack, refresh the page, hit the 'Reset' button, or uninstall/reinstall the mod. As a last resort, try clearing site data.
         `)
       },
       "Keyboard Shortcuts": function(){
@@ -116,10 +118,10 @@ window.addEventListener('load', function () {
           window.removeEventListener("wheel", scrollE)
       }
   })
-  mods.add(ETC, "Reset")
+  mods.add(ETC, "Reset to Default")
   let about = gui.addFolder("About")
   about.close()
-  about.add(ETC, "About")
+  about.add(ETC, "Help")
   about.add(ETC, "Keyboard Shortcuts")
   about.add(ETC, "Github")
   /*Last things*/
