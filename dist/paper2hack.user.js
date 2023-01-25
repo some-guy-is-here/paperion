@@ -46,6 +46,13 @@ window.addEventListener('load', function () {
         })
       },
       "_skins": [],
+      "Pause/Play": function(){
+        if(api.config().unitSpeed !== 0){
+            api.config().unitSpeed = 0
+        } else {
+            api.config().unitSpeed = 90
+        }
+      },
       "Despawn players": function(){api.game().units = [api.game().player]},
       "About": function(){
         alert(`
@@ -99,6 +106,7 @@ window.addEventListener('load', function () {
     api.game().debug = value
     api.game().debugGraph = value
   })
+  mods.add(ETC, "Pause/Play")
   mods.add(ETC, "Unlock all Skins")
   mods.add(ETC, "Despawn players")
   mods.add(ETC, "Scroll to zoom").onFinishChange(value => {
