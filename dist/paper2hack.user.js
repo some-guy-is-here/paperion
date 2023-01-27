@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         paper2hack
 // @description  Modding utility/menu for paper.io
-// @version      0.1.10
+// @version      0.1.11
 // @author       its-pablo
 // @match        https://paper-io.com
 // @match        https://paper-io.com/teams/
@@ -16,7 +16,37 @@ adblock = () => false //this detects if adblock is on, we make it always return 
 window.addEventListener('load', function () {
   "use strict";
   const VERSION = "beta 0.1.10"
-  let newApi = (location.href === "https://paper-io.com/battleroyale/" || location.href === "https://paper-io.com/teams/" || location.href === "https://paperanimals.io/" || location.href === "https://amogus.io/")
+  let newApi
+  switch(location.href) {
+    case "https://paper-io.com/battleroyale/":
+        newApi = true
+        break
+    case "https://paper-io.com/teams/":
+        newApi = true
+        break
+    case "https://paperanimals.io/":
+        newApi = true
+        break
+    case "https://amogus.io/":
+        newApi = true
+        break
+    case "https://paper-io.com/":
+        newApi = false
+        break
+    default:
+        if(!!paper2) {
+            newApi = false
+        } else if(!!paperio2api) {
+            newApi = true
+        } else {
+            //uhh idk
+        }
+  }
+  if(newApi === true){
+    console.log("USING NEW API")
+  } else if(newApi === false){
+    console.log("USING OLD API")
+  }
   window.api = {
       config: function(){
           if(newApi){

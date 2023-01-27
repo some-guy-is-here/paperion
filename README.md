@@ -6,16 +6,16 @@ Next-gen paper.io userscript/extension. Modifies elements in the paper.io api.
 Userscripts require a userscript manager to be installed on your computer. Most are common as browser extensions. We recommend [tampermonkey](https://www.tampermonkey.net/).
 Locate the latest version of paper2hack in the `dist` directory, click on it, and click 'raw' at the top.  
 Additionally, you can install it easier by clicking below
-| Latest version                                                                        | Unstable                                                                           |
-|---------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| [Install ⬇️](https://github.com/its-pablo/paper2hack/raw/master/dist/paper2hack.user.js) | [Install](https://github.com/its-pablo/paper2hack/raw/gui/dist/paper2hack.user.js) |
-
-### Temporary installation
-If you would lke to see how this userscript works, you can just paste in the code into the developer console (Ctrl+Shift+J)
+| Latest version                                                                        |
+|---------------------------------------------------------------------------------------|
+| [Install ⬇️](https://github.com/its-pablo/paper2hack/raw/gui/dist/paper2hack.user.js) |
+Please note: this code cannot simply be pasted into your browser console as it relies on userscript-only features (namely requiring lil-gui)
 
 ## Is this a scam?!?!
 
-No. You can check the code for yourself, or get someone to do it for you. We do not steal your information, IP, or 'token' and send it to third parties. Again, I don't even charge money for this, and it's literally open source. If you still don't trust me i don't care lol.
+No. You can check the code for yourself, or get someone to do it for you. We do not steal your information, IP, or 'token'* and send it to third parties. Again, I don't even charge money for this, and it's literally open source. If you still don't trust me i don't care lol.
+
+*there is no 'token'
 
 ## Development
 
