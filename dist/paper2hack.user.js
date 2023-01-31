@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         paper2hack
 // @description  Modding utility/menu for paper.io
-// @version      0.1.11
+// @version      0.1.12
 // @author       its-pablo
 // @match        https://paper-io.com
 // @match        https://paper-io.com/teams/
@@ -64,10 +64,10 @@ window.addEventListener('load', function () {
       }
   }
   let ETC = {
-      "Reset to Default": function(){alert("Cannot be done with tweakpane!\nTry clearing site data.")},
+      "reset": function(){alert("Cannot be done with tweakpane!\nTry clearing site data.")},
       "zoomScroll": false,
       "debugging": false,
-      "Speed": api.config().unitSpeed,
+      "speed": api.config().unitSpeed,
       "skin": "",
       "skinUnlock": () => {
         shop.btnsData.forEach(item => {
@@ -84,7 +84,16 @@ window.addEventListener('load', function () {
             api.config().unitSpeed = 90
         }
       },
-      "despawnOthers": function(){api.game().units = [api.game().player]},
+      "despawnOthers": function(){
+        api.game().units = [api.game().player]
+        /*api.game().units.forEach(item => {
+            if(item === api.game().player){
+                //dont despawn!
+            } else {
+                item.schemes.manager.Schemes[0].prototype.kill()
+            }
+        })*/
+    },
       "help": function(){
         alert(`
             paper2hack ${VERSION} written by its-pablo and contributors.\n\n
@@ -121,11 +130,10 @@ window.addEventListener('load', function () {
           }
       }
   }
-  let Pane = new Tweakpane.Pane()
-  let pane = new Pane({title: "paper2hack"})
+  let pane = new Tweakpane.Pane({title: "paper2hack"})
   let mods = pane.addFolder({title: "Mods"})
-  mods.add(ETC, "Speed", {min: 5, max: 500, count: 5})
-  mods.add(ETC, "skin", {
+  mods.addInput(ETC, "speed", {min: 5, max: 500, count: 5})
+  mods.addInput(ETC, "skin", {
     label: "Skin (requires refresh)",
     options: {
         "Coming soon (TODO)": ""
@@ -139,25 +147,25 @@ window.addEventListener('load', function () {
       })
       Cookies.set('skin', id)
   })
-  mods.add(ETC, "debugging", {label: "Debug"}).on("change", ev => {
+  mods.addInput(ETC, "debugging", {label: "Debug"}).on("change", ev => {
     api.game().debug = ev.value
     api.game().debugGraph = ev.value
   })
-  mods.add(ETC, "pause", {label: "Pause/Play"})
-  mods.add(ETC, "skinUnlock", {label: "Unlock Skins"})
-  mods.add(ETC, "despawnOthers", {label: "Despawn Players"})
-  mods.add(ETC, "zoomScroll", {label: "Scroll to Zoom"}).on("change", ev => {
+  mods.addButton({title: "Pause/Play"}).on("click", ETC.pause)
+  mods.addButton({title: "Unlock skins",}).on("click", ETC.skinUnlock)
+  mods.addButton({title: "Despawn others"}).on("click", ETC.despawnOthers)
+  mods.addInput(ETC, "zoomScroll", {label: "Scroll to Zoom"}).on("change", ev => {
       if(ev.value === true){
           window.addEventListener("wheel", scrollE)
       } else {
           window.removeEventListener("wheel", scrollE)
       }
   })
-  mods.add(ETC, "Reset to Default")
+  mods.addButton({title: "Reset"}).on('click', ETC.reset)
   let about = pane.addFolder({title: "About", expanded: false})
-  about.add(ETC, "help", {label: "Help"})
-  about.add(ETC, "keysList", {label: "Keyboard Shortcuts"})
-  about.add(ETC, "openGithub", {label: "GitHub"})
+  about.addButton({title: "Help"})
+  about.addButton({title: "Keyboard Shortcuts"}).on("click", ETC.keysList)
+  about.addButton({title:"GitHub"}).on("click", ETC.openGithub)
   /*Last things*/
   if(!localStorage.getItem('paper2hack')){
     this.localStorage.setItem('paper2hack', JSON.stringify({}))
