@@ -121,7 +121,7 @@ window.addEventListener('load', function () {
           }
       }
   }
-  let Pane = Tweakpane.Pane()
+  let Pane = new Tweakpane.Pane()
   let pane = new Pane({title: "paper2hack"})
   let mods = pane.addFolder({title: "Mods"})
   mods.add(ETC, "Speed", {min: 5, max: 500, count: 5})
