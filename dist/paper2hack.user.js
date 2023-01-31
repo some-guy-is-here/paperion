@@ -8,7 +8,7 @@
 // @match        https://paper-io.com/battleroyale/
 // @match        https://paperanimals.io
 // @match        https://amogus.io
-// @require      https://cdn.jsdelivr.net/npm/lil-gui
+// @require      https://cdn.jsdelivr.net/npm/tweakpane@3.1.4/dist/tweakpane.min.js
 // @icon         https://paper-io.com/favicon.ico
 // @grant        none
 // ==/UserScript==
@@ -17,7 +17,7 @@ window.addEventListener('load', function () {
   "use strict";
   const VERSION = "beta 0.1.10"
   let newApi
-  switch(location.href) {
+  switch(location.href) { //remember: they must have trailing slash!!
     case "https://paper-io.com/battleroyale/":
         newApi = true
         break
@@ -64,12 +64,12 @@ window.addEventListener('load', function () {
       }
   }
   let ETC = {
-      "Reset to Default": function(){gui.reset()},
-      "Scroll to zoom": false,
-      "Debug": false,
+      "Reset to Default": function(){alert("Cannot be done with tweakpane!\nTry clearing site data.")},
+      "zoomScroll": false,
+      "debugging": false,
       "Speed": api.config().unitSpeed,
-      "Skin (requires refresh)": "",
-      "Unlock all Skins": () => {
+      "skin": "",
+      "skinUnlock": () => {
         shop.btnsData.forEach(item => {
             if (item.unlockName) {
                 unlockSkin(item.unlockName)
@@ -77,15 +77,15 @@ window.addEventListener('load', function () {
         })
       },
       "_skins": [],
-      "Pause/Play": function(){
+      "pause": function(){
         if(api.config().unitSpeed !== 0){
             api.config().unitSpeed = 0
         } else {
             api.config().unitSpeed = 90
         }
       },
-      "Despawn players": function(){api.game().units = [api.game().player]},
-      "Help": function(){
+      "despawnOthers": function(){api.game().units = [api.game().player]},
+      "help": function(){
         alert(`
             paper2hack ${VERSION} written by its-pablo and contributors.\n\n
             https://github.com/its-pablo/paper2hack \n
@@ -94,19 +94,19 @@ window.addEventListener('load', function () {
             If you encounter any issues with paper2hack, refresh the page, hit the 'Reset' button, or uninstall/reinstall the mod. As a last resort, try clearing site data.
         `)
       },
-      "Keyboard Shortcuts": function(){
+      "keysList": function(){
         alert(`
             None for the moment!\n
             Stay tuned...
         `)
       },
-      "Github": function(){
+      "openGithub": function(){
         window.open("https://github.com/its-pablo/paper2hack", '_blank').focus();
       }
   }
   shop.btnsData.forEach(i => {
       if(i.useId === Cookies.get('skin')){
-          ETC["Skin (requires refresh)"] = i.name
+          ETC.skin = i.name
       }
   })
   shop.btnsData.forEach(i => {ETC._skins.push(i.name)})
@@ -121,46 +121,49 @@ window.addEventListener('load', function () {
           }
       }
   }
-  let GUI = lil.GUI
-  let gui = new GUI({title: "paper2hack"})
-  let mods = gui.addFolder("Mods")
-  mods.open() //just in case it's closed
-  mods.add(ETC, "Speed", 1, 500, 5)
-  mods.add(ETC, "Skin (requires refresh)", ETC._skins).onChange(v => {
+  let Pane = Tweakpane.Pane()
+  let pane = new Pane({title: "paper2hack"})
+  let mods = pane.addFolder({title: "Mods"})
+  mods.add(ETC, "Speed", {min: 5, max: 500, count: 5})
+  mods.add(ETC, "skin", {
+    label: "Skin (requires refresh)",
+    options: {
+        "Coming soon (TODO)": ""
+    }
+  }).on("change", ev => {
       let id;
       shop.btnsData.forEach(i => {
-          if(i.name === v){
+          if(i.name === ev.value){
               id = i.useId
           }
       })
       Cookies.set('skin', id)
   })
-  mods.add(ETC, "Debug").onFinishChange(value => {
-    api.game().debug = value
-    api.game().debugGraph = value
+  mods.add(ETC, "debugging", {label: "Debug"}).on("change", ev => {
+    api.game().debug = ev.value
+    api.game().debugGraph = ev.value
   })
-  mods.add(ETC, "Pause/Play")
-  mods.add(ETC, "Unlock all Skins")
-  mods.add(ETC, "Despawn players")
-  mods.add(ETC, "Scroll to zoom").onFinishChange(value => {
-      if(value === true){
+  mods.add(ETC, "pause", {label: "Pause/Play"})
+  mods.add(ETC, "skinUnlock", {label: "Unlock Skins"})
+  mods.add(ETC, "despawnOthers", {label: "Despawn Players"})
+  mods.add(ETC, "zoomScroll", {label: "Scroll to Zoom"}).on("change", ev => {
+      if(ev.value === true){
           window.addEventListener("wheel", scrollE)
       } else {
           window.removeEventListener("wheel", scrollE)
       }
   })
   mods.add(ETC, "Reset to Default")
-  let about = gui.addFolder("About")
-  about.close()
-  about.add(ETC, "Help")
-  about.add(ETC, "Keyboard Shortcuts")
-  about.add(ETC, "Github")
+  let about = pane.addFolder({title: "About", expanded: false})
+  about.add(ETC, "help", {label: "Help"})
+  about.add(ETC, "keysList", {label: "Keyboard Shortcuts"})
+  about.add(ETC, "openGithub", {label: "GitHub"})
   /*Last things*/
   if(!localStorage.getItem('paper2hack')){
     this.localStorage.setItem('paper2hack', JSON.stringify({}))
   }
-  gui.load(JSON.parse(localStorage.getItem("paper2hack")))
-  gui.onFinishChange(e => {
-      localStorage.setItem("paper2hack", JSON.stringify(gui.save()))
+  pane.importPreset(JSON.parse(localStorage.getItem("paper2hack")))
+  pane.on("change", e => {
+      localStorage.setItem("paper2hack", JSON.stringify(pane.exportPreset()))
   })
 }, false);
