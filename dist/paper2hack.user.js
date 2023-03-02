@@ -43,9 +43,9 @@ window.addEventListener('load', function () {
             }
     }
     if (newApi === true) {
-        console.log("USING NEW API")
+        console.log("[paper2hack] USING NEW API")
     } else if (newApi === false) {
-        console.log("USING OLD API")
+        console.log("[paper2hack] USING OLD API")
     }
     window.api = {
         config: function () {
@@ -70,18 +70,25 @@ window.addEventListener('load', function () {
         "speed": api.config().unitSpeed,
         "skin": "",
         "skinUnlock": () => {
-            shop.btnsData.forEach(item => {
-                if (item.unlockName) {
-                    unlockSkin(item.unlockName)
-                }
-            })
+            try {
+                shop.btnsData.forEach(item => {
+                    if (item.unlockName) {
+                        unlockSkin(item.unlockName)
+                    }
+                })
+                console.log("[paper2hack] skins unlocked!")
+            } catch (e) {
+                console.log("[paper2hack] Error unlocking skins!", e)
+            }
         },
         "_skins": [],
         "pause": function () {
             if (api.config().unitSpeed !== 0) {
                 api.config().unitSpeed = 0
+                console.log("[paper2hack] Paused")
             } else {
                 api.config().unitSpeed = 90
+                console.log("[paper2hack] Unpaused")
             }
         },
         "despawnOthers": function () {
