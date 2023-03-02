@@ -113,7 +113,7 @@ window.addEventListener('load', function () {
             window.open("https://github.com/its-pablo/paper2hack", '_blank').focus();
         }
     }
-    if (newApi) {
+    if (!newApi) {
         shop?.btnsData.forEach(i => {
             if (i.useId === Cookies.get('skin')) {
                 ETC.skin = i.name
@@ -154,7 +154,7 @@ window.addEventListener('load', function () {
         api.game().debugGraph = ev.value
     })
     mods.addButton({ title: "Pause/Play" }).on("click", ETC.pause)
-    if (newApi) {
+    if (!newApi) {
         mods.addButton({ title: "Unlock skins", }).on("click", ETC.skinUnlock)
     }
     mods.addButton({ title: "Despawn others" }).on("click", ETC.despawnOthers)
