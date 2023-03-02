@@ -123,12 +123,12 @@ window.addEventListener('load', function () {
     }
     function scrollE(e) {
         if (e.deltaY > 0) {
-            if (paper2.currentConfig.maxScale > 0.45) {
-                paper2.currentConfig.maxScale -= 0.2
+            if (api.config().maxScale > 0.45) {
+                api.config().maxScale -= 0.2
             }
         } else if (e.deltaY < 0) {
-            if (paper2.currentConfig.maxScale < 4.5) {
-                paper2.currentConfig.maxScale += 0.2
+            if (api.config().maxScale < 4.5) {
+                api.config().maxScale += 0.2
             }
         }
     }
