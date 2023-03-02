@@ -120,18 +120,19 @@ window.addEventListener('load', function () {
             }
         })
         shop?.btnsData.forEach(i => { ETC._skins.push(i.name) })
-        function scrollE(e) {
-            if (e.deltaY > 0) {
-                if (paper2.currentConfig.maxScale > 0.45) {
-                    paper2.currentConfig.maxScale -= 0.2
-                }
-            } else if (e.deltaY < 0) {
-                if (paper2.currentConfig.maxScale < 4.5) {
-                    paper2.currentConfig.maxScale += 0.2
-                }
+    }
+    function scrollE(e) {
+        if (e.deltaY > 0) {
+            if (paper2.currentConfig.maxScale > 0.45) {
+                paper2.currentConfig.maxScale -= 0.2
+            }
+        } else if (e.deltaY < 0) {
+            if (paper2.currentConfig.maxScale < 4.5) {
+                paper2.currentConfig.maxScale += 0.2
             }
         }
     }
+
     let pane = new Tweakpane.Pane({ title: "paper2hack" })
     let mods = pane.addFolder({ title: "Mods" })
     mods.addInput(ETC, "speed", { min: 5, max: 500, count: 5 })
