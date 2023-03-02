@@ -70,7 +70,7 @@ window.addEventListener('load', function () {
       "speed": api.config().unitSpeed,
       "skin": "",
       "skinUnlock": () => {
-        shop.btnsData.forEach(item => {
+        shop?.btnsData.forEach(item => {
             if (item.unlockName) {
                 unlockSkin(item.unlockName)
             }
@@ -113,12 +113,12 @@ window.addEventListener('load', function () {
         window.open("https://github.com/its-pablo/paper2hack", '_blank').focus();
       }
   }
-  shop.btnsData.forEach(i => {
+  shop?.btnsData.forEach(i => {
       if(i.useId === Cookies.get('skin')){
           ETC.skin = i.name
       }
   })
-  shop.btnsData.forEach(i => {ETC._skins.push(i.name)})
+  shop?.btnsData.forEach(i => {ETC._skins.push(i.name)})
   function scrollE(e) {
       if (e.deltaY > 0) {
           if (paper2.currentConfig.maxScale > 0.45) {
@@ -140,7 +140,7 @@ window.addEventListener('load', function () {
     }
   }).on("change", ev => {
       let id;
-      shop.btnsData.forEach(i => {
+      shop?.btnsData.forEach(i => {
           if(i.name === ev.value){
               id = i.useId
           }
