@@ -8,8 +8,7 @@ Locate the latest version of paper2hack in the `dist` directory, click on it, an
 Additionally, you can install it easier by clicking below
 | Latest version                                                                        |
 |---------------------------------------------------------------------------------------|
-| [Install ⬇️](https://github.com/its-pablo/paper2hack/raw/gui/dist/paper2hack.user.js) |
-Please note: this code cannot simply be pasted into your browser console as it relies on userscript-only features (namely requiring lil-gui)
+| ***[Install ⬇️](https://github.com/stretch07/paper2hack/raw/master/dist/paper2hack.user.js)*** |
 
 ## Is this a scam?!?!
 
@@ -33,4 +32,4 @@ There was an attempt to create an adblocker within paper2hack, but the effort ha
 
 
 ## Like it? Star it!
-paper2hack gets more popular every time it is starred. Scroll to the top of the window, and click 'Star' to help us reach more people :)
+paper2hack gets more popular every time it is starred. Scroll to the top of the window, and click 'Star' to help us reach more people :D
