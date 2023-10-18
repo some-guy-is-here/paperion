@@ -103,9 +103,9 @@ window.addEventListener('load', function () {
         },
         "help": function () {
             alert(`
-            paper2hack ${VERSION} written by its-pablo and contributors.\n\n
-            https://github.com/its-pablo/paper2hack \n
-            Issues? https://github.com/its-pablo/paper2hack/issues
+            paper2hack ${VERSION} written by stretch07 and contributors.\n\n
+            https://github.com/stretch07/paper2hack \n
+            Issues? https://github.com/stretch07/paper2hack/issues
 
             If you encounter any issues with paper2hack, refresh the page, hit the 'Reset' button, or uninstall/reinstall the mod. As a last resort, try clearing site data.
         `)
@@ -117,7 +117,7 @@ window.addEventListener('load', function () {
         `)
         },
         "openGithub": function () {
-            window.open("https://github.com/its-pablo/paper2hack", '_blank').focus();
+            window.open("https://github.com/stretch07/paper2hack", '_blank').focus();
         }
     }
     if (!newApi) {
@@ -140,7 +140,7 @@ window.addEventListener('load', function () {
         }
     }
 
-    let pane = new Tweakpane.Pane({ title: "paper2hack" })
+    let pane = new Tweakpane.Pane({ title: "paper2hack"})
     let mods = pane.addFolder({ title: "Mods" })
     mods.addInput(ETC, "speed", { min: 5, max: 500, count: 5 })
     mods.addInput(ETC, "skin", {
@@ -186,4 +186,13 @@ window.addEventListener('load', function () {
     pane.on("change", e => {
         localStorage.setItem("paper2hack", JSON.stringify(pane.exportPreset()))
     })
+
+
+
+    document.querySelectorAll("#message p")[0].innerText = `paper2hack ${VERSION}`
+    document.querySelectorAll("#message p")[1].innerHTML = `<a style="color: white" href="https://github.com/stretch07/paper2hack">check/install update</a>`
+    document.querySelectorAll("#message p")[2].innerText = "have fun hacking"
+    document.querySelectorAll("#message p")[3].remove()
+    document.querySelectorAll("#message p")[4].remove()
+    document.querySelectorAll("#message p")[5].remove()
 }, false);
