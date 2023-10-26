@@ -3,12 +3,9 @@ Next-gen paper.io userscript/extension. Modifies elements in the paper.io api.
 
 ## Installation
 
-Userscripts require a userscript manager to be installed on your computer. Most are common as browser extensions. We recommend [tampermonkey](https://www.tampermonkey.net/).
-Locate the latest version of paper2hack in the `dist` directory, click on it, and click 'raw' at the top.  
-Additionally, you can install it easier by clicking below
-| Latest version                                                                        |
-|---------------------------------------------------------------------------------------|
-| ***[Install ⬇️](https://github.com/stretch07/paper2hack/raw/master/dist/paper2hack.user.js)*** |
+Userscripts require a userscript manager to be installed on your computer. Most are common as browser extensions. We recommend [tampermonkey](https://www.tampermonkey.net/).  
+If you're on [GitHub](https://github.com/stretch07/paper2hack), locate the latest version of paper2hack in the `dist` directory, click on it, and click 'raw' at the top.  
+If you're on [Greasyfork](https://greasyfork.org/en/scripts/478287-paper2hack), click INSTALL THIS SCRIPT to install.
 
 ## Is this a scam?!?!
 
