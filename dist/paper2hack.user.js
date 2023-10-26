@@ -9,6 +9,7 @@
 // @match        https://paperanimals.io
 // @match        https://amogus.io
 // @require      https://cdn.jsdelivr.net/npm/tweakpane@3.1.4/dist/tweakpane.min.js
+// @license      GPL-3.0-only
 // @icon         https://paper-io.com/favicon.ico
 // @grant        none
 // ==/UserScript==
