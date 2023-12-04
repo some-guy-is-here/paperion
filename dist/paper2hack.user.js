@@ -1,13 +1,12 @@
 // ==UserScript==
-// @name         paper2hack
+// @name         paperion
 // @description  Modding utility/menu for paper.io
 // @version      0.1.12
-// @author       its-pablo
+// @author       some-guy-is-here
 // @match        https://paper-io.com
 // @match        https://paper-io.com/teams/
 // @match        https://paper-io.com/battleroyale/
 // @match        https://paperanimals.io
-// @match        https://amogus.io
 // @require      https://cdn.jsdelivr.net/npm/tweakpane@3.1.4/dist/tweakpane.min.js
 // @license      GPL-3.0-only
 // @icon         https://paper-io.com/favicon.ico
@@ -104,11 +103,11 @@ window.addEventListener('load', function () {
         },
         "help": function () {
             alert(`
-            paper2hack ${VERSION} written by stretch07 and contributors.\n\n
+            paperion ${VERSION} written by stretch07 and contributors.\n\n
             https://github.com/stretch07/paper2hack \n
             Issues? https://github.com/stretch07/paper2hack/issues
 
-            If you encounter any issues with paper2hack, refresh the page, hit the 'Reset' button, or uninstall/reinstall the mod. As a last resort, try clearing site data.
+            If you encounter any issues with paper2hacfk, refresh the page, hit the 'Reset' button, or uninstall/reinstall the mod. As a last resort, try clearing site data.
         `)
         },
         "keysList": function () {
@@ -143,7 +142,7 @@ window.addEventListener('load', function () {
 
     let pane = new Tweakpane.Pane({ title: "paper2hack"})
     let mods = pane.addFolder({ title: "Mods" })
-    mods.addInput(ETC, "speed", { min: 5, max: 500, count: 5 })
+    mods.addInput(ETC, "speed", { min: 0.1, max: 5000000000, count: 5 })
     mods.addInput(ETC, "skin", {
         label: "Skin (requires refresh)",
         options: {
